@@ -1,0 +1,34 @@
+[
+  {
+    "layer": "top",
+    "position": "top",
+    "mod": "dock",
+    "exclusive": true,
+    "passthrough": false,
+    "gtk-layer-shell": true,
+    "height": 20,
+    "modules-left": [
+      "custom/launch_wofi",
+      "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+      "clock"
+    ],
+
+    "modules-right": [
+      "cpu",
+      "memory",
+      "temperature",
+      "battery",
+      "custom/space",
+      "pulseaudio",
+      "custom/space",
+      "tray",
+      "custom/space",
+      "custom/power_btn"
+    ],
+
+    "include": ["~/.config/waybar/modules.jsonc"]
+  }
+]
