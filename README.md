@@ -2,6 +2,8 @@
 
 My dotfiles for Arch Linux
 
+[Preview](https://raw.githubusercontent.com/sten-code/dotfiles/master/preview.png)
+
 ## Requirements
 
 ```bash
