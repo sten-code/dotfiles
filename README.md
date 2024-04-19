@@ -1,5 +1,7 @@
 # dotfiles
 
+My dotfiles for Arch Linux
+
 ## Requirements
 
 ```bash
@@ -9,6 +11,8 @@ yay -S wlogout swaylock-effects swww
 
 ## Installation
 
+I'm using stow to create symlinks to the actual dotfiles, this allows for easier dotfile management.
+
 ```bash
 git clone https://github.com/sten-code/dotfiles ~/dotfiles
 cd ~/dotfiles
@@ -16,6 +20,8 @@ stow .
 ```
 
 ### Zsh
+
+I use zsh as my shell with oh-my-zsh
 
 ```bash
 # Install oh-my-zsh
