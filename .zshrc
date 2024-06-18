@@ -11,4 +11,6 @@ alias pi="sudo pacman -Sy "
 alias ps="pacman -Ss "
 alias la="ls -a"
 
+if [ "$TMUX" = "" ]; then tmux; fi
+neofetch
 eval "$(zoxide init zsh)"
