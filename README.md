@@ -39,4 +39,14 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:
 chsh -s $(which zsh)
 ```
 
+### Tmux
+
+I use Tmux, which works well with neovim.
+
+```bash
+# Install TPM, a plugin manager for Tmux
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
+Now press `Ctrl+S I` in order to install all packages that are listed inside the `.tmux.conf` file.
 
