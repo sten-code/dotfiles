@@ -7,7 +7,7 @@ My dotfiles for Arch Linux
 ## Requirements
 
 ```bash
-sudo pacman -S git stow btop dunst hyprland kitty waybar wofi zsh curl udiskie grim slurp wl-clipboard thunar zoxide tmux
+sudo pacman -S git stow btop dunst hyprland kitty waybar wofi zsh curl udiskie grim slurp wl-clipboard thunar zoxide tmux inotify-tools
 yay -S wlogout swaylock-effects swww
 ```
 
