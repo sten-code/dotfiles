@@ -8,9 +8,10 @@ vim.g.background = "light"
 
 vim.opt.swapfile = false
 
+vim.api.nvim_set_keymap("n", "rn", ":set relativenumber!<CR>", { noremap = true, silent = true })
+
 -- Navigation
 vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-j>", "<C-W>j")
 vim.keymap.set("n", "<C-k>", "<C-W>k")
 vim.keymap.set("n", "<C-l>", "<C-W>l")
-
