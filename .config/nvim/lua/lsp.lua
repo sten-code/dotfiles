@@ -1,22 +1,11 @@
 local M = {}
 
 function M.capabilities()
-    return vim.tbl_deep_extend(
-        "force",
-        vim.lsp.protocol.make_client_capabilities(),
-        require("cmp_nvim_lsp").default_capabilities(),
-        {
-            workspace = {
-                didChangeWatchedFiles = {
-                    dynamicRegistration = true,
-                },
-            },
-        }
-    )
+    return require("blink.cmp").get_lsp_capabilities()
 end
 
 local function on_attach(client, bufnr)
-    require("lsp-inlayhints").on_attach(client, bufnr)
+    -- require("lsp-inlayhints").on_attach(client, bufnr)
 
     local function map(mode, lhs, rhs)
         vim.keymap.set(mode, lhs, rhs, { buffer = bufnr })
@@ -30,9 +19,10 @@ local function on_attach(client, bufnr)
     map("n", "grn", vim.lsp.buf.rename)
     map({ "n", "v" }, "gra", vim.lsp.buf.code_action)
     map("i", "<c-s>", vim.lsp.buf.signature_help)
+    map("n", "gn", vim.diagnostic.goto_next)
 end
 
-vim.lsp.inlay_hint.enable(true)
+-- vim.lsp.inlay_hint.enable(true)
 
 vim.diagnostic.config({
     signs = false,

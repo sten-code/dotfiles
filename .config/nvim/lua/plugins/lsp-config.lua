@@ -53,7 +53,6 @@ return {
 					},
 				},
 			},
-			taplo = {},
 			vtsls = {
 				settings = {
 					typescript = {
@@ -81,12 +80,11 @@ return {
 
 		for server, config in pairs(opts.servers) do
 			config = type(config) == "function" and config() or config
-			config.capabilities = vim.tbl_deep_extend("force", capabilities, config.capabilities or {})
+			config.capabilities = capabilities
 			lspconfig[server].setup(config)
 		end
 	end,
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		"b0o/SchemaStore.nvim",
 	},
 }
