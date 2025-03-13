@@ -22,7 +22,7 @@ return {
 			["<C-n>"] = { "select_next" },
 			["<C-p>"] = { "select_prev" },
 			["<Tab>"] = { "select_and_accept", "fallback" },
-			["<CR>"] = { "accept", "fallback" },
+			-- ["<CR>"] = { "accept", "fallback" },
 		},
 		cmdline = {
 			keymap = {

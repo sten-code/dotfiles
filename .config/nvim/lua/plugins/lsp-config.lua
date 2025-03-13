@@ -2,7 +2,29 @@ return {
 	"neovim/nvim-lspconfig",
 	opts = {
 		servers = {
+			-- Python
 			basedpyright = {},
+
+			-- ruff = {
+			-- 	on_attach = function(client)
+			-- 		client.server_capabilities.hoverProvider = false
+			-- 	end,
+			-- },
+
+			-- pylsp = {
+			-- 	settings = {
+			-- 		pylsp = {
+			-- 			plugins = {
+			-- 				pyls_mypy = { enabled = true }, # pip install pyls-mypy
+			-- 				pylint = { enabled = true, executable = "pylint" },
+			-- 				-- pyflakes = { enabled = false },
+			-- 				-- pycodestyle = { enabled = false },
+			-- 			},
+			-- 		},
+			-- 	},
+			-- },
+
+			-- C/C++
 			clangd = {
 				cmd = {
 					"clangd",
@@ -13,9 +35,34 @@ return {
 					"--fallback-style=webkit",
 				},
 			},
+
+			-- CSS/HTML
 			cssls = {},
-			eslint = {},
 			html = {},
+
+			-- JavaScript
+			eslint = {},
+
+			-- TypeScript
+			vtsls = {
+				settings = {
+					typescript = {
+						updateImportsOnFileMove = "always",
+					},
+					javascript = {
+						updateImportsOnFileMove = "always",
+					},
+					vtsls = {
+						enableMoveToFileCodeAction = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+				},
+			},
+
 			jsonls = function()
 				return {
 					settings = {
@@ -37,12 +84,9 @@ return {
 					},
 				}
 			end,
+
 			lua_ls = {},
-			ruff = {
-				on_attach = function(client)
-					client.server_capabilities.hoverProvider = false
-				end,
-			},
+
 			rust_analyzer = {
 				settings = {
 					["rust-analyzer"] = {
@@ -53,24 +97,7 @@ return {
 					},
 				},
 			},
-			vtsls = {
-				settings = {
-					typescript = {
-						updateImportsOnFileMove = "always",
-					},
-					javascript = {
-						updateImportsOnFileMove = "always",
-					},
-					vtsls = {
-						enableMoveToFileCodeAction = true,
-						experimental = {
-							completion = {
-								enableServerSideFuzzyMatch = true,
-							},
-						},
-					},
-				},
-			},
+
 			yamlls = {},
 		},
 	},
