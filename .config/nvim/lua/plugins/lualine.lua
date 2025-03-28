@@ -29,6 +29,11 @@ return {
 			symbols = config.icons.diagnostics,
 		}
 
+		local branch = {
+			"branch",
+			icon = "",
+		}
+
 		return {
 			options = {
 				globalstatus = true,
@@ -37,7 +42,7 @@ return {
 			},
 			sections = {
 				lualine_a = { "mode" },
-				lualine_b = { "branch" },
+				lualine_b = { branch },
 				lualine_c = { filename, "diff" },
 				lualine_x = { "%S", diagnostics, "encoding", "filetype" },
 				lualine_y = { "location" },
