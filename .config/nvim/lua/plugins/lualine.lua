@@ -47,7 +47,8 @@ return {
 		}
 	end,
 	init = function()
-		vim.o.cmdheight = 0 -- Make sure lualine is at the bottom
+		vim.o.showmode = false
+		-- vim.o.cmdheight = 0 -- Make sure lualine is at the bottom
 		vim.o.showcmdloc = "statusline"
 		vim.o.statusline = " "
 	end,

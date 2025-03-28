@@ -1,12 +1,12 @@
-vim.opt.relativenumber = true
-vim.opt.shiftwidth = 4
-vim.opt.number = true
-vim.opt.expandtab = true
-vim.opt.softtabstop = 4
-vim.opt.tabstop = 4
-vim.opt.swapfile = false
+vim.o.relativenumber = true
+vim.o.shiftwidth = 4
+vim.o.number = true
+vim.o.expandtab = true
+vim.o.softtabstop = 4
+vim.o.tabstop = 4
+vim.o.swapfile = false
 vim.g.mapleader = " "
-vim.g.background = "light"
+vim.g.background = "dark"
 
 function switch_case()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
