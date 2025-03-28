@@ -19,6 +19,11 @@ return {
 				["<CR>"] = {}, -- Without this, enter will put in the suggestion of the autocompletion of the command
 				["<Tab>"] = { "select_and_accept", "fallback" },
 			},
+			completion = {
+				menu = {
+					auto_show = true,
+				},
+			},
 		},
 
 		-- Shows a signature of the function when inputting parameters, press <C-space> to pull up the signature.
