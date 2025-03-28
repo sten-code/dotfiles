@@ -38,10 +38,29 @@ vim.api.nvim_set_keymap("n", "<leader>rn", ":set relativenumber!<CR>", { noremap
 -- vim.api.nvim_set_keymap("v", "<leader>sc", [[:s/\v([a-z])([A-Z])/\1_\l\2/g<CR>]], { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>s", "<cmd>lua switch_case()<CR>", { noremap = true, silent = true })
 
--- BufferLine
-vim.api.nvim_set_keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>x", "<cmd>bd<CR>", { noremap = true, silent = true })
+-- Create an autocmd for SQL filetypes to override <C-c> mappings
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "sql",
+	callback = function()
+		-- Clear conflicting <C-c> mappings in insert mode
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>R")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>L")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>l")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>c")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>v")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>p")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>t")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>s")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>T")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>o")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>f")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>k")
+		vim.api.nvim_buf_del_keymap(0, "i", "<C-C>a")
+
+		-- Remap <C-c> to behave like <Esc>
+		vim.api.nvim_buf_set_keymap(0, "i", "<C-c>", "<Esc>", { noremap = true, silent = true })
+	end,
+})
 
 -- Navigation
 vim.keymap.set("n", "<C-h>", "<C-W>h")
