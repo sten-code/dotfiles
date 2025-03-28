@@ -1,72 +1,64 @@
 local config = require("config")
 
 return {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    opts = function()
-        require("lualine_require").require = require
+	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
+	opts = function()
+		require("lualine_require").require = require
 
-        local block = {
-            function()
-                return " "
-            end,
-            padding = { left = 0, right = 0 },
-        }
+		local block = {
+			function()
+				return " "
+			end,
+			padding = { left = 0, right = 0 },
+		}
 
-        local branch = {
-            "b:gitsigns_head",
-            color = { gui = "bold" },
-        }
+		local filename = {
+			"filename",
+			path = 1,
+			symbols = {
+				modified = "", -- Text to show when the file is modified.
+				readonly = "", -- Text to show when the file is non-modifiable or readonly.
+				unnamed = "[No Name]", -- Text to show for unnamed buffers.
+				newfile = "[New]", -- Text to show for newly created file before first write
+			},
+		}
 
-        local filename = {
-            "filename",
-            path = 1,
-        }
+		local diagnostics = {
+			"diagnostics",
+			symbols = config.icons.diagnostics,
+		}
 
-        local diff = {
-            "diff",
-            symbols = {
-                added = config.icons.git.added .. " ",
-                modified = config.icons.git.modified .. " ",
-                removed = config.icons.git.removed .. " ",
-            },
-            source = function()
-                local status = vim.b.gitsigns_status_dict or {}
-                return {
-                    added = status.added,
-                    modified = status.changed,
-                    removed = status.removed,
-                }
-            end,
-        }
+		local branch = {
+			"branch",
+			icon = "",
+		}
 
-        local diagnostics = {
-            "diagnostics",
-            symbols = config.icons.diagnostics,
-        }
-
-        return {
-            options = {
-                globalstatus = true,
-                section_separators = "",
-                component_separators = "",
-            },
-            sections = {
-                lualine_a = { block },
-                lualine_b = { branch },
-                lualine_c = { filename, diff },
-                lualine_x = { diagnostics, "encoding", "filetype" },
-                lualine_y = { "location", "progress" },
-                lualine_z = { block },
-            },
-            extensions = { "lazy", "mason", "oil" },
-        }
-    end,
-    init = function()
-        vim.o.statusline = " "
-    end,
-    dependencies = {
-        "nvim-tree/nvim-web-devicons",
-    },
+		return {
+			options = {
+				globalstatus = true,
+				section_separators = "",
+				component_separators = "",
+			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { branch },
+				lualine_c = { filename, "diff" },
+				lualine_x = { "%S", diagnostics, "encoding", "filetype" },
+				lualine_y = { "location" },
+				lualine_z = { block },
+			},
+			extensions = { "lazy", "mason" },
+		}
+	end,
+	init = function()
+		vim.o.showmode = false
+		-- vim.o.cmdheight = 0 -- Make sure lualine is at the bottom
+		vim.o.showcmdloc = "statusline"
+		vim.o.statusline = " "
+	end,
+	dependencies = {
+		"nvim-tree/nvim-web-devicons",
+		"folke/noice.nvim",
+	},
 }
-
