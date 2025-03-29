@@ -74,3 +74,27 @@ vim.keymap.set("n", "<C-b>", "<C-b>zz")
 -- For some reason it's flipped by default (even with --noplugin and -u NORC), so this makes it so n is next and N is previous
 vim.api.nvim_set_keymap("n", "n", "N", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "N", "n", { noremap = true, silent = true })
+
+if vim.g.neovide then
+	vim.keymap.set("n", "<C-s>", ":w<CR>") -- Save
+	vim.keymap.set("v", "<C-c>", '"+y') -- Copy
+	vim.keymap.set("n", "<C-v>", '"+P') -- Paste normal mode
+	vim.keymap.set("v", "<C-v>", '"+P') -- Paste visual mode
+	vim.keymap.set("c", "<C-v>", "<C-R>+") -- Paste command mode
+	vim.keymap.set("i", "<C-v>", '<ESC>l"+Pli') -- Paste insert mode
+
+	vim.g.neovide_scroll_animation_length = 0.1
+	vim.g.neovide_cursor_trail_size = 0
+	vim.g.neovide_cursor_animation_length = 0.05
+	vim.g.neovide_cursor_animate_command_line = false
+	vim.g.neovide_cursor_animate_in_insert_mode = true
+	-- vim.g.neovide_cursor_smooth_blink = true
+
+	vim.o.guifont = "JetBrainsMono Nerd Font Mono"
+end
+
+-- Allow clipboard copy paste in neovim
+vim.api.nvim_set_keymap("", "<C-v>", "+p<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("!", "<C-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<C-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<C-v>", "<C-R>+", { noremap = true, silent = true })
