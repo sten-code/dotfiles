@@ -213,7 +213,6 @@ return {
 				header,
 				{ type = "padding", val = occupied_lines.padding_between },
 				buttons,
-				{ type = "padding", val = 3 },
 				footer,
 				{ type = "padding", val = bottom_padding },
 			},
