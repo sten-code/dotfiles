@@ -27,6 +27,14 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+function cloc() {
+    if [[ -f .clocignore ]]; then
+        command cloc --exclude-list-file=.clocignore "$@"
+    else
+        command cloc "$@"
+    fi
+}
+
 # Initialize zoxide for zsh
 eval "$(zoxide init zsh)"
 
