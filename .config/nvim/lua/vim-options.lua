@@ -1,10 +1,21 @@
 vim.o.relativenumber = true
-vim.o.shiftwidth = 4
 vim.o.number = true
-vim.o.expandtab = true
+
+vim.o.shiftwidth = 4
 vim.o.softtabstop = 4
 vim.o.tabstop = 4
+vim.o.expandtab = true
+
 vim.o.swapfile = false
+
+-- Highlight the matches when searching, unhighlight after pressing esc or ctrl+c
+vim.o.hlsearch = true
+vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch)
+vim.keymap.set("n", "<C-c>", vim.cmd.nohlsearch)
+vim.o.incsearch = true
+
+vim.o.updatetime = 50
+
 vim.g.mapleader = " "
 vim.g.background = "dark"
 
@@ -31,10 +42,8 @@ function switch_case()
 end
 
 -- Useful binds
-vim.api.nvim_set_keymap("n", "<leader>rn", ":set relativenumber!<CR>", { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("v", "<leader>cc", [[:s/\v_(.)/\U\1/g<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap("v", "<leader>sc", [[:s/\v([a-z])([A-Z])/\1_\l\2/g<CR>]], { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>s", "<cmd>lua switch_case()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>rn", ":set relativenumber!<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>s", "<cmd>lua switch_case()<CR>", { noremap = true, silent = true })
 
 -- Create an autocmd for SQL filetypes to override <C-c> mappings
 vim.api.nvim_create_autocmd("FileType", {
@@ -60,20 +69,33 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- Navigation
+-- Navigation between split panes
 vim.keymap.set("n", "<C-h>", "<C-W>h")
 vim.keymap.set("n", "<C-j>", "<C-W>j")
 vim.keymap.set("n", "<C-k>", "<C-W>k")
 vim.keymap.set("n", "<C-l>", "<C-W>l")
 
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "<C-f>", "<C-f>zz")
-vim.keymap.set("n", "<C-b>", "<C-b>zz")
+-- Center screen after jumping
+vim.keymap.set("n", "<c-d>", "<c-d>zz")
+vim.keymap.set("n", "<c-u>", "<c-u>zz")
+vim.keymap.set("n", "<c-f>", "<c-f>zz")
+vim.keymap.set("n", "<c-b>", "<c-b>zz")
 
--- For some reason it's flipped by default (even with --noplugin and -u NORC), so this makes it so n is next and N is previous
-vim.api.nvim_set_keymap("n", "n", "N", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "N", "n", { noremap = true, silent = true })
+-- Keeps current copied text in the buffer after pasting over something in visual mode
+vim.keymap.set("x", "<leader>p", '"_dP')
+
+-- Move lines in visual mode
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+-- Automatically center after going to next search result
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+-- Copy to system clipboard
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
+vim.keymap.set("n", "<leader>Y", '"+Y')
 
 if vim.g.neovide then
 	vim.keymap.set("n", "<C-s>", ":w<CR>") -- Save
