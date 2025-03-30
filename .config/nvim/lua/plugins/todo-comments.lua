@@ -65,4 +65,8 @@ return {
 			-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 		},
 	},
+	config = function(_, opts)
+		require("todo-comments").setup(opts)
+		vim.keymap.set("n", "<leader>td", ":TodoTelescope<CR>", { noremap = true, silent = true })
+	end,
 }
