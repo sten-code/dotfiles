@@ -6,7 +6,6 @@ return {
 			lua = { "selene" },
 			luau = { "selene" },
 			cpp = { "clangtidy" },
-			rust = { "clippy" },
 			python = { "pydocstyle", "pylint", "bandit" },
 		},
 		linters = {
