@@ -163,7 +163,7 @@ return {
 				button("f", "  Find file", "RainbowYellow", ":Telescope find_files<CR>"),
 				button("h", "  Recently opened files", "RainbowOrange", ":Telescope oldfiles<CR>"),
 				button("l", "  Projects", "RainbowGreen", ":Telescope marks<CR>"),
-				-- button("g", "  Open Last Session", "RainbowBlue", ":source ~/.config/nvim/session.vim<CR>"),
+				button("r", "  Restore latest session", "RainbowBlue", ":SessionRestore<CR>"),
 				button("c", "  Open Config", "RainbowBlue", ":cd ~/.config/nvim<CR>:e init.lua<CR>"),
 				button("q", "󰅚  Quit", "RainbowViolet", ":q<CR>"),
 			},
