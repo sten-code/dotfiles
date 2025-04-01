@@ -14,6 +14,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("i", "<c-b>", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
 		vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
+		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
 	end,
 })
 
