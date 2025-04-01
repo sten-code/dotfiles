@@ -1,24 +1,3 @@
-vim.o.relativenumber = true
-vim.o.number = true
-
-vim.o.shiftwidth = 4
-vim.o.softtabstop = 4
-vim.o.tabstop = 4
-vim.o.expandtab = true
-
-vim.o.swapfile = false
-
--- Highlight the matches when searching, unhighlight after pressing esc or ctrl+c
-vim.o.hlsearch = true
-vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch)
-vim.keymap.set("n", "<C-c>", vim.cmd.nohlsearch)
-vim.o.incsearch = true
-
-vim.o.updatetime = 50
-
-vim.g.mapleader = " "
-vim.g.background = "dark"
-
 function switch_case()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	local word = vim.fn.expand("<cword>")
@@ -44,6 +23,10 @@ end
 -- Useful binds
 vim.keymap.set("n", "<leader>rn", ":set relativenumber!<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>s", "<cmd>lua switch_case()<CR>", { noremap = true, silent = true })
+
+-- Allow the esc key and ctrl+c to clear the highlighted results
+vim.keymap.set("n", "<Esc>", vim.cmd.nohlsearch)
+vim.keymap.set("n", "<C-c>", vim.cmd.nohlsearch)
 
 -- Create an autocmd for SQL filetypes to override <C-c> mappings
 vim.api.nvim_create_autocmd("FileType", {
