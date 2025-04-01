@@ -12,5 +12,6 @@ vim.o.hlsearch = true
 vim.o.incsearch = true
 
 vim.o.updatetime = 50
+vim.o.signcolumn = "yes"
 
 vim.g.mapleader = " "
