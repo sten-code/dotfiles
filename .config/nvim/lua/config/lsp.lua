@@ -62,4 +62,15 @@ vim.diagnostic.config({
 })
 
 -- Enable each language server by filename under the lsp/ folder
-vim.lsp.enable({ "basedpyright", "luals", "clangd", "jsonls", "typescript", "yamlls", "html", "css" })
+vim.lsp.enable({
+	"basedpyright",
+	"luals",
+	"clangd",
+	"jsonls",
+	"typescript",
+	"yamlls",
+	"html",
+	"css",
+	"arduinols",
+	"asm-lsp",
+})

@@ -5,6 +5,8 @@ return {
 	opts = {
 		ensure_install = {
 			-- servers
+			"arduino-language-server",
+			"asm-lsp",
 			"basedpyright",
 			"clangd",
 			"css-lsp",
