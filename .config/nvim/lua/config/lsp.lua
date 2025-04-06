@@ -38,18 +38,13 @@ vim.lsp.config("*", {
 	root_markers = { ".git" },
 })
 
+local config = require("config")
 vim.diagnostic.config({
 	virtual_text = true,
-	signs = true,
 	update_in_insert = true,
 	underline = true,
 	severity_sort = false,
 	float = true,
-})
-
-local config = require("config")
-
-vim.diagnostic.config({
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = config.icons.diagnostics.error,
