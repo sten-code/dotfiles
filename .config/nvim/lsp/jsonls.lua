@@ -1,6 +1,6 @@
 ---@type vim.lsp.Config
 return {
-	cmd = { "jsonls" },
+	cmd = { "vscode-json-language-server" },
 	filetypes = { "json", "jsonc" },
 	root_markers = {
 		".git",
