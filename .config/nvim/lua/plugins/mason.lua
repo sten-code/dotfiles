@@ -30,6 +30,9 @@ return {
 			"pylint",
 			"pydocstyle",
 			"bandit",
+			-- debuggers
+			"debugpy",
+			"codelldb",
 		},
 	},
 	init = function()
