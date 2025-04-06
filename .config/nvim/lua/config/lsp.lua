@@ -48,17 +48,23 @@ vim.diagnostic.config({
 })
 
 local config = require("config")
-local signs = {
-	Error = config.icons.diagnostics.error,
-	Warn = config.icons.diagnostics.warn,
-	Hint = config.icons.diagnostics.hint,
-	Info = config.icons.diagnostics.info,
-}
 
-for type, icon in pairs(signs) do
-	local hl = "DiagnosticSign" .. type
-	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-end
+vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = config.icons.diagnostics.error,
+			[vim.diagnostic.severity.WARN] = config.icons.diagnostics.warn,
+			[vim.diagnostic.severity.HINT] = config.icons.diagnostics.hint,
+			[vim.diagnostic.severity.INFO] = config.icons.diagnostics.info,
+		},
+		texthl = {
+			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+			[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			[vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+			[vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+		},
+	},
+})
 
 -- Enable each language server by filename under the lsp/ folder
 vim.lsp.enable({ "basedpyright", "luals", "clangd", "jsonls", "rust_analyzer", "typescript", "yamlls", "html", "css" })
