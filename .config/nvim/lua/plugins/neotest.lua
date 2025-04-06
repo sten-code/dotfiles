@@ -24,11 +24,60 @@ return {
 			desc = "Run nearest test",
 		},
 		{
-			"<leader>tt",
+			"<leader>tf",
 			function()
 				require("neotest").run.run(vim.fn.expand("%"))
 			end,
-			desc = "Run entire file",
+			desc = "Test entire file",
+		},
+		{
+			"<leader>td",
+			function()
+				require("neotest").run.run({ strategy = "dap" })
+			end,
+			desc = "Debug nearest test",
+		},
+		{
+			"<leader>ts",
+			function()
+				require("neotest").run.stop()
+			end,
+			desc = "Stop test",
+		},
+		{
+			"<leader>ta",
+			function()
+				require("neotest").run.attach()
+			end,
+			desc = "Attach to nearest test",
+		},
+		{
+			"<leader>to",
+			function()
+				require("neotest").output.open()
+			end,
+			desc = "Show test output",
+		},
+		{
+			"<leader>tp",
+			function()
+				require("neotest").output_panel.toggle()
+			end,
+			desc = "Toggle output panel",
+		},
+		{
+			"<leader>tv",
+			function()
+				require("neotest").summary.toggle()
+			end,
+			desc = "Toggle summary",
+		},
+		{
+			"<leader>tc",
+			function()
+				require("neotest").run.run({ suite = true, env = { CI = true } })
+			end,
+			desc = "Run all tests with CI",
 		},
 	},
 	config = function()
