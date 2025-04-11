@@ -1,20 +1,24 @@
+local function on_attach(bufnr)
+	local opts = { buffer = bufnr }
+
+	vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+	vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+	vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
+	vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
+	vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts)
+	vim.keymap.set("i", "<c-b>", vim.lsp.buf.signature_help, opts)
+	vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
+	vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
+	vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+end
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)
-		local opts = { buffer = event.buf }
-
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "grr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "grn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("i", "<c-b>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "gn", vim.diagnostic.goto_next, opts)
-		vim.keymap.set("n", "gp", vim.diagnostic.goto_prev, opts)
-		vim.keymap.set("n", "gl", vim.diagnostic.open_float, opts)
+		on_attach(event.buf)
 	end,
 })
 
@@ -73,4 +77,9 @@ vim.lsp.enable({
 	"css",
 	"arduinols",
 	"asm-lsp",
+	"rust_analyzer",
 })
+
+return {
+	on_attach = on_attach,
+}

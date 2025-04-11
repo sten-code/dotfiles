@@ -24,7 +24,6 @@ return {
 			"prettierd",
 			"black",
 			"isort",
-			"rustfmt",
 			"clang-format",
 			-- linters
 			"luacheck",
