@@ -1,6 +1,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 export VULKAN_SDK="$HOME/sdks/vulkan/1.3.290.0/x86_64"
 export EDITOR="nvim"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Setup Oh-My-Zsh
 ZSH_THEME="refined"
