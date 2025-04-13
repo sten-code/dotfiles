@@ -39,7 +39,7 @@ return {
 				keywordStyle = { italic = true },
 				statementStyle = { bold = true },
 				typeStyle = {},
-				transparent = false, -- do not set background color
+				transparent = true, -- do not set background color
 				dimInactive = false, -- dim inactive window `:h hl-NormalNC`
 				terminalColors = true, -- define vim.g.terminal_color_{0,17}
 				colors = { -- add/modify theme and palette colors
@@ -54,6 +54,7 @@ return {
 					dark = "wave", -- try "dragon" !
 					light = "lotus",
 				},
+				false,
 			})
 		end,
 	},
@@ -61,12 +62,16 @@ return {
 		"folke/tokyonight.nvim",
 		lazy = false,
 		priority = 1000,
-		opts = {},
+		opts = {
+			transparent = true,
+		},
 	},
 	{
 		"vague2k/vague.nvim",
 		config = function()
-			require("vague").setup({})
+			require("vague").setup({
+				transparent = true,
+			})
 		end,
 	},
 }
