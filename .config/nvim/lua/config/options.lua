@@ -15,3 +15,4 @@ vim.o.updatetime = 50
 vim.o.signcolumn = "yes"
 
 vim.g.mapleader = " "
+vim.o.termguicolors = true
